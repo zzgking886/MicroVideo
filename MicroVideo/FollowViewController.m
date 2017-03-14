@@ -15,6 +15,8 @@
     NSMutableArray *focusList;
 }
 
+- (void)configUI;
+
 @end
 
 @implementation FollowViewController
@@ -26,16 +28,29 @@
     
     //https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1489408538915&di=2262ae32cbe183a302006fb00a9a8b20&imgtype=0&src=http%3A%2F%2Fwww.qqjia.com%2Fz%2F09%2Ftu10292_19.jpg
     
-    NSString *strImageUrl = @"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1489408538915&di=2262ae32cbe183a302006fb00a9a8b20&imgtype=0&src=http%3A%2F%2Fwww.qqjia.com%2Fz%2F09%2Ftu10292_19.jpg";
+//    NSString *strImageUrl = @"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1489408538915&di=2262ae32cbe183a302006fb00a9a8b20&imgtype=0&src=http%3A%2F%2Fwww.qqjia.com%2Fz%2F09%2Ftu10292_19.jpg";
     
     //zzg test
     focusList = [[NSMutableArray alloc] initWithObjects:@"推荐",@"新闻",@"头条",@"体育",@"综艺",@"社会", nil];
+
+    [self configUI];
+}
+
+
+- (void)configUI
+{
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 50 * SIZESCALE, self.view.frame.size.width, 50 * SIZESCALE)];
+    titleLabel.textAlignment = NSTextAlignmentCenter;
+    titleLabel.textColor = [UIColor blackColor];
+    titleLabel.text = @"推荐关注";
+    titleLabel.font = [UIFont systemFontOfSize:16.0 * SIZESCALE];
+    [self.view addSubview:titleLabel];
     
     UICollectionViewFlowLayout *_layout = [[UICollectionViewFlowLayout alloc] init];
     _layout.headerReferenceSize = CGSizeZero;
     _layout.scrollDirection = UICollectionViewScrollDirectionVertical;
     
-    UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 80 ,self.view.bounds.size.width, self.view.bounds.size.height - 144) collectionViewLayout:_layout];
+    UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 120 ,self.view.bounds.size.width, 276 * SIZESCALE) collectionViewLayout:_layout];
     collectionView.backgroundColor = [UIColor clearColor];
     [collectionView registerClass:[focusCollectionViewCell class] forCellWithReuseIdentifier:@"defaultCell"];
     collectionView.delegate = self;
@@ -43,6 +58,24 @@
     collectionView.showsHorizontalScrollIndicator = NO;
     collectionView.showsVerticalScrollIndicator = NO;
     [self.view addSubview:collectionView];
+    
+    UIButton *focusChannelBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    focusChannelBtn.frame = CGRectMake((self.view.frame.size.width - 140) / 2, collectionView.frame.origin.y + collectionView.frame.size.height + 35, 140, 30);
+    [focusChannelBtn setBackgroundColor:[UIColor lightGrayColor]];
+    [focusChannelBtn setTitle:@"进入关注频道" forState:UIControlStateNormal];
+    focusChannelBtn.titleLabel.font = [UIFont systemFontOfSize:12.0 * SIZESCALE];
+    [focusChannelBtn.layer setCornerRadius:15];
+    focusChannelBtn.layer.masksToBounds = YES;
+    [self.view addSubview:focusChannelBtn];
+    
+    UIButton *findMoreBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    findMoreBtn.frame = CGRectMake((self.view.frame.size.width - 100) / 2, focusChannelBtn.frame.origin.y + focusChannelBtn.frame.size.height + 10, 100, 30);
+    [findMoreBtn setBackgroundColor:[UIColor clearColor]];
+    [findMoreBtn setTitle:@"发现更多>" forState:UIControlStateNormal];
+    [findMoreBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+    findMoreBtn.titleLabel.font = [UIFont systemFontOfSize:10.0 * SIZESCALE];
+    [self.view addSubview:findMoreBtn];
+    
     if (self.m_bViewControllerInTest)
     {
         collectionView.backgroundColor = [UIColor greenColor];
@@ -68,6 +101,8 @@
     focusCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identif forIndexPath:indexPath];
 
     [cell.m_ImageView sd_setImageWithURL:[NSURL URLWithString:@"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1489408538915&di=2262ae32cbe183a302006fb00a9a8b20&imgtype=0&src=http%3A%2F%2Fwww.qqjia.com%2Fz%2F09%2Ftu10292_19.jpg"]];
+    [cell.m_NameLabel setText:@"张振钢钢"];
+    [cell.m_FocusNumberLabel setText:@"12万人关注"];
     if (self.m_bViewControllerInTest)
     {
         cell.contentView.backgroundColor = [UIColor redColor];
@@ -78,7 +113,7 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"didSelectItem %d", indexPath.item);
+    NSLog(@"didSelectItem %ld", (long)indexPath.item);
 }
 
 
@@ -87,7 +122,7 @@
 // cell的大小
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return CGSizeMake(60, 80);
+    return CGSizeMake(60 * SIZESCALE, 123 * SIZESCALE);
 }
 
 // header的大小
@@ -108,7 +143,7 @@
 
 -(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
 {
-    return UIEdgeInsetsMake(0, 30, 0, 30);
+    return UIEdgeInsetsMake(0, 30 * SIZESCALE, 0, 30 * SIZESCALE);
 }
 
 

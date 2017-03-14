@@ -5,8 +5,11 @@
 //  Created by Zhangzhengang on 17/3/10.
 //  Copyright © 2017年 Zhangzhengang. All rights reserved.
 //
+#define SCREEN_WIDTH   [UIScreen mainScreen].bounds.size.width
+#define SCREENH_HEIGHT [UIScreen mainScreen].bounds.size.height
 
 #import "MyViewController.h"
+#import "BezierView.h"
 
 @interface MyViewController ()
 
@@ -18,6 +21,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
+    BezierView *view = [[BezierView alloc] initWithFrame:CGRectMake(0, 20, SCREEN_WIDTH, 120 * SIZESCALE)];
+    [self.view addSubview:view];
 }
 
 - (void)didReceiveMemoryWarning {

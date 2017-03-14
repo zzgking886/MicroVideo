@@ -5,7 +5,6 @@
 //  Created by Zhangzhengang on 17/3/13.
 //  Copyright © 2017年 Zhangzhengang. All rights reserved.
 //
-
 #import "BaseViewController.h"
 
 @interface BaseViewController ()
@@ -19,7 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.m_bViewControllerInTest = YES;
+    self.m_bViewControllerInTest = NO;
     self.automaticallyAdjustsScrollViewInsets = NO;
 }
 

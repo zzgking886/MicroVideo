@@ -35,6 +35,7 @@
 		22405D3A1E723CA600E8C794 /* MyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22405D391E723CA600E8C794 /* MyViewController.m */; };
 		22405D3D1E723E2500E8C794 /* CCTabbarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22405D3C1E723E2500E8C794 /* CCTabbarController.m */; };
 		22405D401E724B1A00E8C794 /* HttpServerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 22405D3F1E724B1A00E8C794 /* HttpServerHelper.m */; };
+		224AC8961E77CB8100D6F5C3 /* BezierView.m in Sources */ = {isa = PBXBuildFile; fileRef = 224AC8951E77CB8100D6F5C3 /* BezierView.m */; };
 		225E0C761E72333800051496 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 225E0C751E72333800051496 /* main.m */; };
 		225E0C791E72333800051496 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 225E0C781E72333800051496 /* AppDelegate.m */; };
 		225E0C7C1E72333800051496 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 225E0C7B1E72333800051496 /* ViewController.m */; };
@@ -101,6 +102,9 @@
 		22405D3C1E723E2500E8C794 /* CCTabbarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCTabbarController.m; sourceTree = "<group>"; };
 		22405D3E1E724B1A00E8C794 /* HttpServerHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpServerHelper.h; sourceTree = "<group>"; };
 		22405D3F1E724B1A00E8C794 /* HttpServerHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpServerHelper.m; sourceTree = "<group>"; };
+		224AC8941E77CB8100D6F5C3 /* BezierView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BezierView.h; sourceTree = "<group>"; };
+		224AC8951E77CB8100D6F5C3 /* BezierView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BezierView.m; sourceTree = "<group>"; };
+		224AC8971E77D46700D6F5C3 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		225E0C711E72333800051496 /* MicroVideo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MicroVideo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		225E0C751E72333800051496 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		225E0C771E72333800051496 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -131,6 +135,8 @@
 				2204A51E1E768B9B00811044 /* mainNavCollectionViewCell.m */,
 				2204A5641E76A44A00811044 /* focusCollectionViewCell.h */,
 				2204A5651E76A44A00811044 /* focusCollectionViewCell.m */,
+				224AC8941E77CB8100D6F5C3 /* BezierView.h */,
+				224AC8951E77CB8100D6F5C3 /* BezierView.m */,
 			);
 			path = customView;
 			sourceTree = "<group>";
@@ -241,6 +247,7 @@
 			isa = PBXGroup;
 			children = (
 				225E0C751E72333800051496 /* main.m */,
+				224AC8971E77D46700D6F5C3 /* PrefixHeader.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -320,6 +327,7 @@
 				2204A55E1E76A22200811044 /* UIImage+MultiFormat.m in Sources */,
 				2204A55F1E76A22200811044 /* UIImage+WebP.m in Sources */,
 				22405D301E723C0900E8C794 /* CCNavigationViewController.m in Sources */,
+				224AC8961E77CB8100D6F5C3 /* BezierView.m in Sources */,
 				2204A55A1E76A22200811044 /* SDWebImageManager.m in Sources */,
 				225E0C7C1E72333800051496 /* ViewController.m in Sources */,
 				2204A5231E769F3D00811044 /* BaseViewController.m in Sources */,
@@ -466,7 +474,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 3FEA4VKGS4;
-				GCC_PREFIX_HEADER = "";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/MicroVideo/PrefixHeader.pch";
 				INFOPLIST_FILE = MicroVideo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -480,7 +489,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 3FEA4VKGS4;
-				GCC_PREFIX_HEADER = "";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/MicroVideo/PrefixHeader.pch";
 				INFOPLIST_FILE = MicroVideo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

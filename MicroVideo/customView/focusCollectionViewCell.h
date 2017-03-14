@@ -12,5 +12,8 @@
 @interface focusCollectionViewCell : UICollectionViewCell
 
 @property (nonatomic, retain) UIImageView *m_ImageView;
+@property (nonatomic, retain) UILabel     *m_NameLabel;
+@property (nonatomic, retain) UILabel     *m_FocusNumberLabel;
+@property (nonatomic, retain) UIButton    *m_FocusBtn;
 
 @end
